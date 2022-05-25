@@ -95,6 +95,10 @@ input[type='radio'] {
     font-size: $fs-xxl;
 }
 
+.result__score--slash {
+    margin: 0 2rem;
+}
+
 // ==========================================================
 //                    Section CONTROLS
 // ==========================================================
@@ -112,6 +116,12 @@ input[type='radio'] {
     transform: translate(-50%,-50%);
     z-index: 1;
     background-color: $clr-acc;
+    transition: all 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        transform: translate(-50%,-50%) scale(1.1);
+    }
 }
 
 .controls__result--outcome {
@@ -157,6 +167,12 @@ input[type='radio'] {
     &:hover {
         fill: $clr-sec;
         transform: scale(1.2);
+        box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        fill: $clr-bg;
+        background-color: $clr-sec;
     }
 }
 

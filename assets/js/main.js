@@ -1,10 +1,9 @@
+'use strict';
+
 // HTML ELEMENTS
 
-// radio
-const choice5 = document.querySelector('.rounds__choice--5');
-const choice10 = document.querySelector('.rounds__choice--10');
-const choice15 = document.querySelector('.rounds__choice--15');
-const choice20 = document.querySelector('.rounds__choice--20');
+// radio buttons
+const choices = document.querySelectorAll('input[type="radio"]');
 
 // input-controls
 const btns = document.querySelector('.controls__btns');
@@ -32,21 +31,20 @@ const controlsResult = document.querySelector('.controls__result');
 const controlsText = document.querySelector('.controls__text');
 
 
-// startvalues variables
+// ------------startvalues variables---------------
 let scorePlayer = 0;
 let scoreCPU = 0;
 let currentRound = 0;
 let maxRound;
 
-// functions
+// ------------------functions------------------
 
 // how many rounds
 const rounds = () => {
     let choice;
-    if(choice5.checked) choice = 5;  
-    else if(choice10.checked) choice = 10;
-    else if(choice15.checked) choice = 15;
-    else if(choice20.checked) choice = 20;
+    choices.forEach(el => {
+        if(el.checked) choice = Number(el.value);
+    })
     return choice;
 }
 
@@ -63,37 +61,30 @@ const randomCPU = () => {
 const winner = (player, cpu) => {
     let result;
     if(player === cpu) {
-        console.log('draw');
         result = 0;
     }
     else if (player === 'rock' && cpu === 'scissors') {
         scorePlayer++;
-        console.log('player wins');
         result = 1;
     }
     else if(player === 'rock' && cpu === 'paper') {
         scoreCPU++;
-        console.log('cpu wins');
         result = 2;
     }
     else if(player === 'paper' && cpu === 'rock') {
         scorePlayer++;
-        console.log('player wins');
         result = 1;
     }
     else if(player === 'paper' && cpu === 'scissors') {
         scoreCPU++;
-        console.log('cpu wins');
         result = 2;
     }
     else if(player === 'scissors' && cpu === 'rock') {
         scoreCPU++;
-        console.log('cpu wins');
         result = 2;
     }
     else if(player === 'scissors' && cpu === 'paper') {
         scorePlayer++;
-        console.log('player wins');
         result = 1;
     }
     let outcome;
@@ -115,9 +106,8 @@ const winner = (player, cpu) => {
         labelCPU.classList.add('result__label--winner');
         labelCPU.classList.remove('result__label--looser');
     }
-    let resultOutput = `<div><span class="controls__result--outcome controls__result--${outcome}">${outcome}</span></div><div><span>Your Enemy chose <span class="controls__result--cpu">${cpu}</span></span></div>`
 
-    controlsResult.innerHTML = resultOutput;
+    controlsResult.innerHTML = `<div><span class="controls__result--outcome controls__result--${outcome}">${outcome}</span></div><div><span>Your Enemy chose <span class="controls__result--cpu">${cpu}</span></span></div>`;
 }
 
 // updateUI 
@@ -128,6 +118,7 @@ const updateUI = () => {
     labelScoreCPU.innerHTML = scoreCPU;
 }
 
+// end of game
 const gameEnd = () => {
     if(scorePlayer === scoreCPU) {
         controlsText.innerHTML = `GAME IS OVER. IT's a DRAW. BOTH LOST`;
@@ -143,6 +134,7 @@ const reset = () => {
     currentRound = 0;
     scoreCPU = 0;
     scorePlayer = 0;
+    maxRound = undefined;
     roundsChoice.classList.remove('hidden');
     roundsLabel.classList.add('hidden');
     roundsHeadline.innerHTML = 'How many rounds?';
@@ -155,21 +147,21 @@ const reset = () => {
 
 // gamelogic
 const game = (choicePlayer) => {
-    maxRound = rounds();
+    if(!maxRound) maxRound = rounds();
     currentRound++;
     if(currentRound <= maxRound) {
 
-        // start of the game
+        // change the ui
         roundsChoice.classList.add('hidden');
         roundsLabel.classList.remove('hidden');
         controlsHeadline.classList.add('hidden');
         controlsResult.classList.remove('hidden');
-        roundsHeadline.innerHTML = 'Round:'
+        roundsHeadline.innerHTML = 'Rounds played:'
 
         // whos the winner
         winner(choicePlayer,randomCPU());
 
-        // UI
+        // update UI
         updateUI();
 
         if(currentRound === maxRound) {
@@ -184,21 +176,17 @@ btns.addEventListener('click', function(e) {
     e.preventDefault();
     let select = e.target.closest('.controls__btn');
     if(select) {
-        if (select === btnRock) {
-            select = 'rock';
-        } else if ( select === btnPaper) {
-            select = 'paper';
-        } else if ( select === btnScissors) {
-            select = 'scissors';
-        }
-        game(select);
+        game(select.dataset.input);
     }
 })
 
 restart.addEventListener('click', reset);
 
+
+// CLOSE POP UP WINDOW
+
 document.body.addEventListener('click', function(e){
-    if(e.target.closest('.controls__btns') !== btns) {
+    if(!(e.target.closest('.controls__btns'))) {
         controlsResult.classList.add('hidden');
     } 
 })

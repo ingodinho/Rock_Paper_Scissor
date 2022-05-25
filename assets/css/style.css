@@ -131,6 +131,10 @@ input[type=radio] {
   font-size: 7.4rem;
 }
 
+.result__score--slash {
+  margin: 0 2rem;
+}
+
 .controls__result {
   display: grid;
   grid-template-columns: 1;
@@ -144,6 +148,11 @@ input[type=radio] {
   transform: translate(-50%, -50%);
   z-index: 1;
   background-color: #364fc7;
+  transition: all 0.2s;
+}
+.controls__result:hover {
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .controls__result--outcome {
@@ -191,6 +200,11 @@ input[type=radio] {
 .controls__btn svg:hover {
   fill: #f59f00;
   transform: scale(1.2);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2);
+}
+.controls__btn svg:active {
+  fill: #f8f9fa;
+  background-color: #f59f00;
 }
 
 .controls__restart {
