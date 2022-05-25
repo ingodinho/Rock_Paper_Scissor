@@ -9,6 +9,8 @@ Styling wurde mit SCSS erstellt.
 
 Die Seite wurde für die normale Ansicht über die MacBook-Auflösung konzipiert. Responsive Design stand nicht im Fokus und wurde nicht umgesetzt.
 
+Finden tut ihr die Seite hier: https://ingodinho.github.io/Rock_Paper_Scissor/
+
 Besonderheiten, Learnings:
 
 JS:

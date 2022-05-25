@@ -97,7 +97,7 @@ const winner = (player, cpu) => {
         result = 1;
     }
     let outcome;
-    // let resultOutput = `<div><span class="controls__result--${outcome}">${outcome}</span></div><div><span class="controls__result--choice-cpu">Your Enemy chose ${cpu}</span></div>`
+
     if(result === 0) {
         outcome = 'draw';
         labelPlayer.className = 'result__label result__label--player';
