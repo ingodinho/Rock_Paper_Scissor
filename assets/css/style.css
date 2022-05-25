@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-size: 30px;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.controls__btn svg {
+  width: 50px;
+}
+.controls__btn svg:hover {
+  fill: red;
+}
+
+/*# sourceMappingURL=style.css.map */
