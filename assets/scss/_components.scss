@@ -1,8 +1,180 @@
+// ==========================================================
+//                    CONTAINER HEADER/MAIN
+// ==========================================================
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: $clr-prm;
+    padding: 2rem 0;
+    border-radius: 10px;
+}
+
+section {
+    margin: 2rem 0;
+    border-radius: 10px;
+    background-color: $clr-prm;
+}
+// ==========================================================
+//                    Section ROUNDS
+// ==========================================================
+
+.rounds__headline {
+    padding: 1rem 0;
+}
+
+.rounds__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 0;
+}
+
+.rounds__choice {
+    display: grid;
+    grid-template-columns: 2rem 5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.rounds__label {
+    padding: 2rem 0;
+}
+
+.rounds__label span {
+    font-size: $fs-xl;
+}
+
+.rounds__label--slash {
+    margin: 0 1rem;
+}
+
+input[type='radio'] {
+    transform: scale(2);
+}
+
+// ==========================================================
+//                    Section RESULT
+// ==========================================================
+
+.result {
+    background-color: $clr-prm;
+    padding: 5rem 0;
+}
+
+.result__label {
+    display: inline-block;
+    font-size: $fs-l;
+    background-color: $clr-sec;
+    border-radius: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.5s;
+}
+
+.result__label--player {
+    transform: translate(-10rem, -5rem) rotate(-15deg);
+}
+
+.result__label--cpu {
+    transform: translate(10rem, -5rem) rotate(15deg);
+}
+
+.result__label--winner {
+    background-color: $clr-win;
+}
+
+.result__label--looser {
+    background-color: $clr-los;
+}
+
+.result__score {
+    display: inline-block;
+    font-size: $fs-xxl;
+}
+
+// ==========================================================
+//                    Section CONTROLS
+// ==========================================================
+
+.controls__result {
+    display: grid;
+    grid-template-columns: 1;
+    align-items: center;
+    font-size: $fs-m;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    background-color: $clr-acc;
+}
+
+.controls__result--outcome {
+    display: inline-block;
+    padding: 5rem 10rem;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: $fs-xxxl;
+}
+
+.controls__result--draw {
+    background-color: $clr-sec;
+}
+.controls__result--win {
+    background-color: $clr-win;
+}
+.controls__result--loose {
+    background-color: $clr-los;
+}
+
+.controls__result--cpu {
+    text-transform: uppercase;
+    background-color: $clr-sec;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+}
+
+.controls__btns {
+    padding: 2rem 0;
+}
+
+.controls__btn {
+    margin: 0 3rem;
+}
+
 .controls__btn svg {
-    width: 50px;
+    width: 100px;
+    background-color: $clr-bg;
+    border-radius: 50px;
+    transition: transform 0.2s;
 
     &:hover {
-        fill: red;
+        fill: $clr-sec;
+        transform: scale(1.2);
+    }
+}
+
+.controls__restart {
+    display: inline-block;
+    text-decoration: none;
+    font-size: $fs-m;
+    color: $clr-bg;
+    font-family: inherit;
+    background-color: $clr-sec;
+    padding: 1rem 8rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: $clr-eff;
+        padding: 1rem 12rem;
     }
 }
 
