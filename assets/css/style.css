@@ -22,4 +22,8 @@ body {
   fill: red;
 }
 
+.hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
